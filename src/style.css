@@ -1085,6 +1085,15 @@ input, textarea, button {
   box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
 }
 
+.form-submit-btn:disabled {
+  background: rgba(30, 41, 59, 0.5);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 .success-toast {
   display: flex;
   align-items: center;
@@ -1099,6 +1108,23 @@ input, textarea, button {
 
 .toast-icon {
   color: var(--success);
+  flex-shrink: 0;
+}
+
+.error-toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #fca5a5;
+  margin-top: 10px;
+}
+
+.toast-error-icon {
+  color: #ef4444;
   flex-shrink: 0;
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send, CheckCircle, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle, ExternalLink, AlertCircle } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
 
 export default function Contact() {
@@ -11,24 +11,47 @@ export default function Contact() {
     message: ''
   });
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccessMessage('');
+    setErrorMessage('');
+    setIsSubmitting(true);
 
-    // Future backend integration:
-    // await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formData),
-    // });
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const response = await fetch(`${apiUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
 
-    setSuccessMessage('Thanks for reaching out. Backend integration will be added soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    
-    // Clear message after 5 seconds
-    setTimeout(() => {
-      setSuccessMessage('');
-    }, 6000);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong. Please try again.');
+      }
+
+      setSuccessMessage(data.message || 'Thanks for reaching out! Your message has been sent successfully.');
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      
+      setTimeout(() => {
+        setSuccessMessage('');
+      }, 6000);
+    } catch (error) {
+      console.error('Submit error:', error);
+      setErrorMessage(error.message || 'Failed to send message. Please try again.');
+      
+      setTimeout(() => {
+        setErrorMessage('');
+      }, 6000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e) => {
@@ -145,15 +168,22 @@ export default function Contact() {
               ></textarea>
             </div>
 
-            <button type="submit" className="form-submit-btn">
-              <span>Send Message</span>
-              <Send size={16} />
+            <button type="submit" className="form-submit-btn" disabled={isSubmitting}>
+              <span>{isSubmitting ? 'Sending...' : 'Send Message'}</span>
+              <Send size={16} className={isSubmitting ? 'animate-pulse' : ''} />
             </button>
 
             {successMessage && (
               <div className="success-toast animate-fade-in">
                 <CheckCircle size={20} className="toast-icon" />
                 <p>{successMessage}</p>
+              </div>
+            )}
+
+            {errorMessage && (
+              <div className="error-toast animate-fade-in">
+                <AlertCircle size={20} className="toast-error-icon" />
+                <p>{errorMessage}</p>
               </div>
             )}
           </form>
