@@ -256,9 +256,16 @@ input, textarea, button {
   transition: var(--transition-normal);
 }
 
-.nav-links a:hover::after {
+.nav-links a:hover::after,
+.nav-links a.active::after {
   width: 100%;
 }
+
+.nav-links a.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
 
 .mobile-menu-toggle {
   display: none;
@@ -295,6 +302,13 @@ input, textarea, button {
   color: var(--primary);
   padding-left: 8px;
 }
+
+.mobile-dropdown-menu a.active {
+  color: var(--primary);
+  padding-left: 12px;
+  border-left: 2px solid var(--primary);
+}
+
 
 /* Hero Section */
 .hero-section {
