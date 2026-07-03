@@ -7,7 +7,7 @@ export default function Hero() {
   const highlights = [
     { icon: <Briefcase size={20} />, label: "3.5+ Years Experience" },
     { icon: <Database size={20} />, label: "240M+ Records Handled" },
-    { icon: <Server size={20} />, label: "Node.js + MongoDB Specialist" },
+    { icon: <Server size={20} />, label: "Node.js, SQL & MongoDB" },
     { icon: <Zap size={20} />, label: "Database Performance Tuning" }
   ];
 
@@ -19,13 +19,19 @@ export default function Hero() {
 
       <div className="hero-grid">
         <div className="hero-content">
-          <span className="hero-eyebrow">Hi, I'm {name}</span>
+          <div className="hero-eyebrow-row">
+            <span className="hero-eyebrow">Hi, I'm {name}</span>
+            <span className="status-badge">
+              <span className="status-dot"></span>
+              Open to Work
+            </span>
+          </div>
           <h1 className="hero-title">
-            Backend Developer &<br />
-            <span className="gradient-text">MongoDB Specialist</span>
+            Node.js Developer &<br />
+            <span className="gradient-text">Database Engineer</span>
           </h1>
           <p className="hero-desc">
-            I build scalable backend systems, optimize databases, and create reliable APIs using Node.js, Express.js, MongoDB, and cloud-based tools.
+            I build scalable backend systems, design efficient relational & NoSQL database schemas, and optimize performance using Node.js, Express.js, MongoDB, and SQL.
           </p>
 
           <div className="hero-actions">
