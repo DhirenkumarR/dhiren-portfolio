@@ -1,8 +1,8 @@
 export const portfolioData = {
   profile: {
     name: "Dhirenkumar Rathod",
-    title: "Backend Developer & MongoDB Specialist",
-    summary: "Backend Developer with 3.5+ years of experience building scalable APIs, designing efficient database schemas, and optimizing MongoDB performance for production systems. Skilled in Node.js, Express.js, MongoDB, MySQL, TypeScript, and cloud-based integrations. Experienced in developing REST APIs, improving query performance, creating indexing strategies, and supporting high-volume applications. Passionate about clean backend architecture, database optimization, and building reliable systems that scale.",
+    title: "Node.js Developer & Backend Engineer",
+    summary: "Backend Developer with 3.5+ years of experience building scalable APIs, designing efficient database schemas, and optimizing database performance for production systems. Skilled in Node.js, Express.js, MongoDB, SQL (MySQL, MSSQL), TypeScript, and cloud-based integrations. Experienced in developing REST APIs, optimizing query performance, and supporting high-volume applications. Passionate about clean backend architecture, database optimization, and building reliable systems that scale.",
     email: "dhiren.m.rathod@gmail.com",
     phone: "+91 7016566323",
     location: "Ahmedabad, Gujarat, India",
@@ -27,7 +27,7 @@ export const portfolioData = {
     {
       company: "Impero IT Services",
       role: "Software Engineer",
-      date: "Feb 2026 – Present",
+      date: "Feb 2026 – Jun 2026",
       points: [
         "Developing scalable backend services using Node.js, Express.js, and MongoDB.",
         "Building and maintaining APIs for production-level applications.",
